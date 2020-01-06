@@ -1,12 +1,29 @@
+$(document).ready(function() {
+
+
+
 // input
-var input = '';
+var input = "brussel sprouts";
+var input = encodeURI(input)
 // health labels
 var healthLabel = "&health=";
 // diets
 var keto = "keto-friendly";
 var pesca = "pescatarian";
+
+// allowable filters
+var balanced = "balanced";
+var highProtein = "high-protein"
+var lowFat = "low-fat";
+var lowCarb = "low-carb";
+var sugarConscious = "sugar-conscious";
+var peanutFree = "peanut-free";
+var treeNutFree = "tree-nut-free";
+var alcoholFree = "alcohol-free";
 var vegan = "vegan";
 var vegetarian = "vegetarian";
+
+
 // intolerances
 var gluten = "gluten-free";
 var lactoseIntolerant = "dairy-free";
@@ -36,11 +53,51 @@ var nordic = "Nordic";
 var southAmerican = "South American";
 var southEastAsian = "South East Asian";
 
+var queryURL = "https://api.edamam.com/search?q=" + input + "&from=0&to=100&app_id=de5d421e&app_key=3b067d8684260b2f7abcb8eb43481d4c" 
+
+var queryURL = queryURL.concat(healthLabel, treeNutFree)
+
+var queryURL = queryURL.concat(healthLabel, vegetarian)
+
+var recipeSet = [];
+var setnumber = 0;
+
+getRecipe();
+
+
+$("#nextSet").on("click", function (event) {
+    
+
+    if(setnumber > 8) {
+        return;
+    }
+
+    else {
+    event.preventDefault();
+    setnumber++
+    renderList();
+    }
+})
+
+
+$("#previousSet").on("click", function (event) {
+    if(setnumber <= 0) {
+        return
+    }
+
+    else {
+        
+        event.preventDefault();
+        setnumber--
+        renderList();
+    }
+    
+})
 
 
 function getRecipe() {
     
-    var queryURL = "https://api.edamam.com/search?q=" + input + "&count=10&app_id=3b067d8684260b2f7abcb8eb43481d4c" 
+
 
     // if (checkbox == true) {}
 
@@ -51,7 +108,16 @@ function getRecipe() {
 
     }).then(function(response) {
         console.log(queryURL);
-        console.log(response.hits[0].recipe.url);
+       
+        setnumber = 0;
+        recipeSet = response.hits
+        
+        renderList();
+        
+    
+
+        
+// user click on next set
 
 
 
@@ -69,10 +135,62 @@ event.preventDefault();
 var input = $("#searchField").val().trim();
 
 if (input === "") {
+
 return;
+
  }
 
- getRecipe();
+getRecipe();
  
 
 })
+
+
+
+
+function renderList () {
+
+    $(".uk-container").text("")
+
+    for(var i = 0; i <= 9; i++){
+        
+        // recipe labels
+        recipeSet[ setnumber*10+i ];
+            
+        
+
+        recipeLabel = $("<ul>" + recipeSet[ setnumber*10+i ].recipe.label + "</ul>")
+        $(".uk-container").append(recipeLabel)
+        
+        // recipe ingredients
+
+        $.each(recipeSet[ setnumber*10+i ].recipe.ingredientLines, function (index, value) {
+            
+            recipeIngredients = $("<li>" + value + "</li>")
+            $(".uk-container").append(recipeIngredients)
+        })
+
+        // recipe image
+
+            recipeImg = $("<img>").css({ 'height': '150px', 'width': '200px' });
+
+            recipeImg.attr("src", recipeSet[ setnumber*10+i ].recipe.image);
+            $(".uk-container").append(recipeImg)
+
+        // recipe url
+
+            recipeUrl = $("<div>");
+            recipeUrlLink = $("<a>" + recipeSet[ setnumber*10+i ].recipe.url + "</a>");
+            recipeUrl.append(recipeUrlLink);
+
+            $(".uk-container").append(recipeUrl)
+            
+    
+
+    }
+
+
+
+}
+
+});
