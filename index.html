@@ -23,8 +23,7 @@
         integrity="sha256-dIUk9DKD/v0o1fxg+PjgACxiS8VyUc+bD7zya8qYsi8=" crossorigin="anonymous"></script>
 
 
-    <!-- link to Javascript -->
-    <script src="script.js"></script>
+   
 
 </head>
 
@@ -52,9 +51,9 @@
                 <!--Recipe search-->
                 <div class="uk-margin">
 
-                    <form class="uk-search uk-search-default">
+                    <form id="searchBar" class="uk-search uk-search-default">
                         <span uk-search-icon></span>
-                        <input class="uk-search-input" type="search" placeholder="">
+                        <input id="searchBar" class="uk-search-input" type="search" placeholder="Enter here">
                     </form>
 
                     <button class="uk-button uk-button-primary uk-button-small" button
@@ -133,86 +132,23 @@
                     </div>
 
                     <!--Recipes search return will appear here-->
-                    <ul uk-accordion>
-                        <li>
-                            <a class="uk-accordion-title" id="recipeTitle" href="#">Recipe 1</a>
-                            <div class="uk-accordion-content" id="recipe">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="uk-accordion-title" id="recipeTitle2" href="#">Recipe 2</a>
-                            <div class="uk-accordion-content" id="recipe2">
-                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                    ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="uk-accordion-title" id="recipeTitle3" href="#">Recipe 3</a>
-                            <div class="uk-accordion-content " id="recipe3">
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="uk-accordion-title" id="recipeTitle4" href="#">Recipe 4</a>
-                            <div class="uk-accordion-content" id="recipe4">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="uk-accordion-title" id="recipeTitle5" href="#">Recipe 5</a>
-                            <div class="uk-accordion-content" id="recipe5">
-                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                    ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="uk-accordion-title" id="recipeTitle6" href="#">Recipe 6</a>
-                            <div class="uk-accordion-content " id="recipe6">
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="uk-accordion-title" id="recipeTitle7" href="#">Recipe 7</a>
-                            <div class="uk-accordion-content" id="recipe7">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="uk-accordion-title" id="recipeTitle8" href="#">Recipe 8</a>
-                            <div class="uk-accordion-content" id="recipe8">
-                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                    ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="uk-accordion-title" id="recipeTitle9" href="#">Recipe 9</a>
-                            <div class="uk-accordion-content " id="recipe9">
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="uk-accordion-title" id="recipeTitle10" href="#">Recipe 10</a>
-                            <div class="uk-accordion-content " id="recipe10">
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
-                            </div>
-                        </li>
+                    <ul uk-accordion id="accordion">
+
+
                     </ul>
-
-
+                    <div class="uk-text-center">
+                    <button  id="previousSet" class="uk-button uk-button default">Previous</button>
+                    <button  id="nextSet" class="uk-button uk-button default">Next</button>
+                    </div>
+                   
                     <!--Previous/Next recipe buttons-->
-                    <ul class="uk-pagination uk-flex-center">
+                    <!-- <ul class="uk-pagination uk-flex-center">
                         <li><a href="#"><span class="uk-margin-small-right" uk-pagination-previous></span> </a></li>
                         <li class="uk-margin-auto-center"><a href="#"><span class="uk-margin-small-left"
                                     uk-pagination-next></span></a></li>
-                    </ul>
+                    </ul> -->
+
+
                 </div>
             </div>
 
@@ -352,7 +288,8 @@
     <script type="text/javascript" src="moment.js"></script>
     <script type="text/javascript" src="jsonMock.js"></script>
     <script type="text/javascript" src="googleCalScript.js"></script>
-
+ <!-- link to Javascript -->
+ <script src="script.js"></script>
 </body>
 
 </html>
