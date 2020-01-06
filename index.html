@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Recipe Calendar</title>
-     <!-- UIkit CSS -->
+    <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/css/uikit.min.css" />
 
     <!-- UIkit JS -->
@@ -19,16 +20,200 @@
     <script src="script.js"></script>
 
 </head>
+
 <body>
-    
-        <div class="uk-container">
+    <nav class="uk-navbar-container" uk-navbar>
+        <div class="uk-navbar-left">
 
-         
+            <ul class="uk-navbar-nav">
+                <li class="uk-active"> <h3>Weekly Meal Planner</h3></a></li>
+
+        </div>
+
+        </div>
+    </nav>
+
+    <div class="uk-container">
+
+        <div uk-grid>
+            <div class="uk-width-1-2@m uk-width-*@s">
+                <h5>What would you like to eat?</h5>
 
 
+                <!--Recipe search-->
+                <div class="uk-margin">
 
+                    <form class="uk-search uk-search-default">
+                        <span uk-search-icon></span>
+                        <input class="uk-search-input" type="search" placeholder="">
+                    </form>
+
+                    <button class="uk-button uk-button-primary uk-button-small" button
+                        id="searchButton">Search</span></button>
+
+                </div>
+
+                <!--Checkboxes containing search parameters/filters-->
+                <div class="uk-flex-inline">
+                    <h6>Diets &nbsp; &nbsp; </h6>
+                    <li> <label><input class="uk-checkbox" id="keto" type="checkbox"> Keto&nbsp; &nbsp;</label></li>
+                    <li> <label><input class="uk-checkbox" id="pesca" type="checkbox"> Pescatarian&nbsp; &nbsp;</label></li>
+                    <li> <label><input class="uk-checkbox" id="vegan" type="checkbox"> Vegan&nbsp; &nbsp;</label></li>
+                    <li> <label><input class="uk-checkbox" id="vegetarian" type="checkbox"> Vegetarian</label></li>
+                    <li> <label><input class="uk-checkbox" id="gluten" type="checkbox"> Gluten-free</label></li>
+                    <li> <label><input class="uk-checkbox" id="lactoseIntolerant" type="checkbox"> Dairy-free</label></li>
+                </div>
+
+
+                <div class="uk-container">
+
+                    <!-- This is a button -->
+
+                    <button class="uk-button uk-button-default" type="button">Cuisines</button>
+                    <div class="uk-width-large" uk-dropdown>
+                        <div class="uk-dropdown-grid uk-child-width-1-2@m" uk-grid>
+                            <div>
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    <li> <label><input class="uk-checkbox" id="american" type="checkbox"> American</label></li>
+                                    <li> <label><input class="uk-checkbox" id="asian" type="checkbox"> Asian</label></li>
+                                    <li> <label><input class="uk-checkbox" id="british" type="checkbox"> British</label></li>
+                                    <li> <label><input class="uk-checkbox" id="caribbean" type="checkbox"> Caribbean</label></li>
+                                    <li> <label><input class="uk-checkbox" id="centralEurope" type="checkbox"> Central Europe</label></li>
+                                    <li> <label><input class="uk-checkbox" id="chinese" type="checkbox"> Chinese</label></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    <li> <label><input class="uk-checkbox" id="easternEurope" type="checkbox"> Eastern Europe</label></li>
+                                    <li> <label><input class="uk-checkbox" id="french" type="checkbox"> French</label></li>
+                                    <li> <label><input class="uk-checkbox" id="indian" type="checkbox"> Italian</label></li>
+                                    <li> <label><input class="uk-checkbox" id="japanese" type="checkbox"> Japanese</label></li>
+                                    <li> <label><input class="uk-checkbox" id="kosher" type="checkbox"> Kosher</label></li>
+                                    <li> <label><input class="uk-checkbox" id="mediterranean" type="checkbox"> Mediterranean</label></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    <li> <label><input class="uk-checkbox" id="mexican" type="checkbox"> Mexican</label></li>
+                                    <li> <label><input class="uk-checkbox" id="middleEastern" type="checkbox"> Middle Eastern</label></li>
+                                    <li> <label><input class="uk-checkbox" id="nordic" type="checkbox"> Nordic</label></li>
+                                    <li> <label><input class="uk-checkbox" id="southAmerican" type="checkbox"> South American</label></li>
+                                    <li> <label><input class="uk-checkbox" id="southEastAsian" type="checkbox"> South East Asian</label></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Recipes search return will appear here-->
+                    <ul uk-accordion>
+                        <li>
+                            <a class="uk-accordion-title" id="recipeTitle" href="#">Recipe 1</a>
+                            <div class="uk-accordion-content" id="recipe">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title" id="recipeTitle2" href="#">Recipe 2</a>
+                            <div class="uk-accordion-content" id="recipe2">
+                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title" id="recipeTitle3" href="#">Recipe 3</a>
+                            <div class="uk-accordion-content " id="recipe3">
+                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title" id="recipeTitle4" href="#">Recipe 4</a>
+                            <div class="uk-accordion-content" id="recipe4">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title" id="recipeTitle5" href="#">Recipe 5</a>
+                            <div class="uk-accordion-content" id="recipe5">
+                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title" id="recipeTitle6" href="#">Recipe 6</a>
+                            <div class="uk-accordion-content " id="recipe6">
+                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title" id="recipeTitle7" href="#">Recipe 7</a>
+                            <div class="uk-accordion-content" id="recipe7">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title" id="recipeTitle8" href="#">Recipe 8</a>
+                            <div class="uk-accordion-content" id="recipe8">
+                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title" id="recipeTitle9" href="#">Recipe 9</a>
+                            <div class="uk-accordion-content " id="recipe9">
+                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title" id="recipeTitle10" href="#">Recipe 10</a>
+                            <div class="uk-accordion-content " id="recipe10">
+                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+                            </div>
+                        </li>
+                    </ul>
+
+
+                    <!--Previous/Next recipe buttons-->
+                    <ul class="uk-pagination uk-flex-center">
+                        <li><a href="#"><span class="uk-margin-small-right" uk-pagination-previous></span> </a></li>
+                        <li class="uk-margin-auto-center"><a href="#"><span class="uk-margin-small-left"
+                                    uk-pagination-next></span></a></li>
+                    </ul>
+                </div>
             </div>
-    
+
+            <div class="uk-width-1-2@m uk-width-*@s">
+                <h5>Meal Plan</h5>
+
+                <!--Span id will populate with weeks days-->
+                <ul class="uk-list uk-list-striped">
+                    <li> <span id="Monday"></span> Monday
+                       <!--Popper will include recipe title with clickable link to recipe page & ingredients
+                        <a href= "">Recipe Title</a><br>
+                        <p>Ingredients</p>
+                        -->
+                    </li>
+                    <li> <span id="Tuesday"></span> Tuesday</li>
+                    <li> <span id="Wednesday"></span> Wednesday</li>
+                    <li> <span id="Thursday"></span> Thursday</li>
+                    <li> <span id="Friday"></span> Friday</li>
+                    <li> <span id="Saturday"></span> Saturday</li>
+                    <li> <span id="Sunday"></span> Sunday</li>
+                </ul>
+
+
+                <ul class="uk-pagination uk-flex-center">
+                    <li><a href="#"><span class="uk-margin-small-right" uk-pagination-previous></span> </a></li>
+                    <li class="uk-margin-auto-center"><a href="#"><span class="uk-margin-small-left"
+                                uk-pagination-next></span></a></li>
+                </ul>
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
 
 </body>
+
 </html>
