@@ -3,7 +3,7 @@ $(document).ready(function() {
 
 
 // input
-var input = document.getElementById("searchBar").value
+var input = document.getElementById('searchBar').value
 var queryURL = "https://api.edamam.com/search?q=" + input + "&from=0&to=100&app_id=de5d421e&app_key=3b067d8684260b2f7abcb8eb43481d4c" 
 // health labels
 var healthLabel = "&health=";
@@ -147,13 +147,6 @@ function getRecipe() {
 }
 
 
-
-
-
-
-
-
-
 function renderList () {
 
     $("#accordion").text("")
@@ -164,30 +157,33 @@ function renderList () {
         recipeSet[ setnumber*10+i ];
             
         li = $("<li>")
+        
 
         recipeLabel = $("<a>" + recipeSet[ setnumber*10+i ].recipe.label + "</a>")
         recipeLabel.attr("href", "#")
+        recipeLabel.attr("data", `label-${i}`)
         recipeLabel.addClass("uk-accordion-title")
         
         
         // accordion div
         accordionDiv = $("<div>");
         accordionDiv.addClass("uk-accordion-content")
+        accordionDiv.attr("data", `details-${i}`)
         
 
         // recipe ingredients
 
+
+        
         $.each(recipeSet[ setnumber*10+i ].recipe.ingredientLines, function (index, value) {
             
             
 
             recipeIngredients = $("<div>" + value + "</div>")
-           
+    
         
             
         })
-
-       
 
 
         // recipe image
