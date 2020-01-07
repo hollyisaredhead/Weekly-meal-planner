@@ -1,12 +1,8 @@
 $(document).ready(function () {
 
-
-    // $(".addToCal").on("click", function (event) {
-    //     event.stopPropagation();
-    // });
-
     var eventsLocal = [];
     var recipeHits = recipeSet.hits;
+    var recipeDetails;
     var dayOfWeek, weekStartDt, weekStartDtISO, weekEndDt, weekEndDtISO;
 
     // Set weekly calendar to current
@@ -17,7 +13,7 @@ $(document).ready(function () {
     });
 
     // Client ID and API key from the Developer Console
-    var CLIENT_ID = '803650121348-pmrabje385ksk7s6qaergh3smpg8a9if.apps.googleusercontent.com';
+    var CLIENT_ID = '803650121348-q45tpl7gpaf83mm2b81oks4kesov2sd1.apps.googleusercontent.com';
     var API_KEY = 'AIzaSyCeM1m73twcAewk29CbTe4IJIIc4U1hQkQ';
 
     // Array of API discovery doc URLs for APIs used by the quickstart
@@ -166,6 +162,15 @@ $(document).ready(function () {
 
         event.preventDefault();
 
+        recipeDetails
+        // get start date/time from popper window
+        var startDateTime = moment($(".mealDate").val() + "T" + $(".mealTime").val()).format();
+        var endTime = moment($(".mealTime").val()).add(recipeDetails.totalTime, "minutes");
+        var endDateTime = moment($(".mealDate").val() + "T" + endTime).format();
+
+        // close the Popper element if it is visible
+        document.querySelector("#dateTimePicker").classList.add("uk-hidden");
+
         if (!gapi.auth2.getAuthInstance().isSignedIn.get()) {
             handleAuthClick(event);
         };
@@ -245,7 +250,7 @@ $(document).ready(function () {
     }
 
     //--------------------------------------------------------//
-    //               Preview on Hover function                       
+    //               Popper: Preview on Hover function                       
     //--------------------------------------------------------//
     function mealPreviewOpen(event) {
         event.preventDefault();
@@ -273,7 +278,14 @@ $(document).ready(function () {
 
     function mealPreviewClose(event) {
         event.preventDefault();
-        if ($(event.target).parents().hasClass("popper") && !($(event.relatedTarget).parents().hasClass("popper"))) {
+
+        // To close the popup, either
+        // pointer should be leaving a popper and entering a non-popper element, or
+        // pointer should be leaving a non-popper and entering a non-popper element
+        if (($(event.target).parents().hasClass("popper") &&
+            !($(event.relatedTarget).parents().hasClass("popper"))) ||
+            (!($(event.target).parents().hasClass("popper")) &&
+                !($(event.relatedTarget).parents().hasClass("popper")))) {
             var popupEle = document.querySelector("#popupBubble");
             popupEle.classList.add("uk-hidden");
         }
@@ -283,6 +295,51 @@ $(document).ready(function () {
     $(document).on('mouseover', '.mealEvent', mealPreviewOpen);
 
     $(document).on('mouseout', mealPreviewClose);
+
+    //--------------------------------------------------------//
+    //               Popper: Date and time picker function                       
+    //--------------------------------------------------------//
+
+    function dateTimePicker(event) {
+        event.preventDefault();
+        var refEle = event.target;
+        var popupEle = document.querySelector("#dateTimePicker");
+        var mealDate = $("#mealDate");
+        var mealTime = $("#mealTime");
+
+        // Set default value for event date and time
+        mealDate.val(moment().format("YYYY-MM-DD"));
+        mealTime.val(moment().format("HH:MM"));
+
+        console.log(mealDate.val() + "T" + mealTime.val());
+
+        popupEle.classList.remove("uk-hidden");
+        var popper = new Popper(refEle, popupEle, {
+            placement: 'auto',
+            eventsEnabled: true,
+            modifiers: {
+                preventOverflow: {
+                    boundariesElement: refEle.parentNode,
+                    escapeWithReference: true,
+                },
+            }
+        });
+
+    }
+
+    $(document).on('click', '.addRecipe', function (event) {
+        event.preventDefault();
+        // get the recipe
+        var recipeID = event.target.parentNode.dataset.recipeId;
+
+        recipeDetails = recipeHits.find(obj => { return obj.uri === recipeID });
+
+        dateTimePicker(event);
+    });
+    $(document).on('click', '#addEventCancelButton', function (event) {
+        event.preventDefault();
+        document.querySelector("#dateTimePicker").classList.add("uk-hidden");
+    });
 
 
     //--------------------------------------------------------//

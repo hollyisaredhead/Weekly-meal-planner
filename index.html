@@ -23,7 +23,7 @@
         integrity="sha256-dIUk9DKD/v0o1fxg+PjgACxiS8VyUc+bD7zya8qYsi8=" crossorigin="anonymous"></script>
 
 
-   
+
 
 </head>
 
@@ -137,10 +137,10 @@
 
                     </ul>
                     <div class="uk-text-center">
-                    <button  id="previousSet" class="uk-button uk-button default">Previous</button>
-                    <button  id="nextSet" class="uk-button uk-button default">Next</button>
+                        <button id="previousSet" class="uk-button uk-button default">Previous</button>
+                        <button id="nextSet" class="uk-button uk-button default">Next</button>
                     </div>
-                   
+
                     <!--Previous/Next recipe buttons-->
                     <!-- <ul class="uk-pagination uk-flex-center">
                         <li><a href="#"><span class="uk-margin-small-right" uk-pagination-previous></span> </a></li>
@@ -258,38 +258,66 @@
                     </div>
                 </div>
 
-
-                <!--Add buttons to initiate auth sequence and sign out-->
-                <input class="uk-button uk-button-primary" id="addEvent_button" type="button" value="Add to Cal">
-                <!-- <input id="signout_button" type="button" value="Signout"> -->
-
-
-                <div class="popper uk-width-1-4 uk-hidden" id="popupBubble">
-                    <div class="uk-card uk-card-default">
-                        <div class="uk-card-media-top">
-                            <img src="" class="uk-align-center" id="mealImage" alt="">
-                        </div>
-                        <div class="uk-card-body">
-                            <h3 class="uk-card-title" id="mealName"></h3>
-                            <a class="uk-text-break" id="mealDetails" target="_blank"></a>
-                        </div>
-                    </div>
+                <div class="addRecipe uk-width-small"
+                    data-recipe-id="http://www.edamam.com/ontologies/edamam.owl#recipe_7879614ad1d3687818ba7a494ef0bab9">
+                    <a class="uk-button uk-button-default">Add +</a>
                 </div>
-
-
 
             </div>
 
-
         </div>
+
+
+
+        <!-- Popper element for meal preview in hidden state -->
+        <div class="popper uk-width-1-4 uk-hidden uk-box-shadow-large" id="popupBubble">
+            <div class="uk-card uk-card-default">
+                <div class="uk-card-media-top">
+                    <img src="" class="uk-align-center" id="mealImage" alt="">
+                </div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title" id="mealName"></h3>
+                    <a class="uk-text-break" id="mealDetails" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popper element for adding event in hidden state -->
+        <div class="popper uk-width-1-4 uk-background-muted uk-padding uk-panel uk-hidden uk-box-shadow-large"
+            id="dateTimePicker">
+
+            <form class="uk-form-stacked">
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="mealDate">Date</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" id="mealDate" type="date" placeholder="Enter Date">
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="mealTime">Time</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" id="mealTime" type="time">
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <a class="uk-button uk-button-default" id="addEvent_button">Add to Cal</a>
+                    <a class="uk-button uk-button-default" id="addEventCancelButton">Cancel</a>
+                </div>
+
+            </form>
+        </div>
+
+
 
     </div>
 
     <script type="text/javascript" src="moment.js"></script>
     <script type="text/javascript" src="jsonMock.js"></script>
     <script type="text/javascript" src="googleCalScript.js"></script>
- <!-- link to Javascript -->
- <script src="script.js"></script>
+    <!-- link to Javascript -->
+    <script src="script.js"></script>
 </body>
 
 </html>
