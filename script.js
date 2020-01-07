@@ -3,8 +3,8 @@ $(document).ready(function() {
 
 
 // input
-var input = "brussel sprouts";
-var input = encodeURI(input)
+var input = document.getElementById('searchBar').value
+var queryURL = "https://api.edamam.com/search?q=" + input + "&from=0&to=100&app_id=de5d421e&app_key=3b067d8684260b2f7abcb8eb43481d4c" 
 // health labels
 var healthLabel = "&health=";
 // diets
@@ -53,16 +53,12 @@ var nordic = "Nordic";
 var southAmerican = "South American";
 var southEastAsian = "South East Asian";
 
-var queryURL = "https://api.edamam.com/search?q=" + input + "&from=0&to=100&app_id=de5d421e&app_key=3b067d8684260b2f7abcb8eb43481d4c" 
 
-var queryURL = queryURL.concat(healthLabel, treeNutFree)
-
-var queryURL = queryURL.concat(healthLabel, vegetarian)
 
 var recipeSet = [];
 var setnumber = 0;
 
-getRecipe();
+// getRecipe();
 
 
 $("#nextSet").on("click", function (event) {
@@ -94,10 +90,34 @@ $("#previousSet").on("click", function (event) {
     
 })
 
-
-function getRecipe() {
+$("#searchButton").on("click", function(event) {
+    event.preventDefault();
+    
     
 
+    // var input = encodeURI(input)
+    
+    
+    // if (input === "") {
+    
+    // return;
+    
+    //  }
+    
+     
+    
+    getRecipe();
+    
+    
+    })
+    
+function getRecipe() {
+    
+    
+
+    // var queryURL = queryURL.concat(healthLabel, treeNutFree)
+    
+    // var queryURL = queryURL.concat(healthLabel, vegetarian)
 
     // if (checkbox == true) {}
 
@@ -127,69 +147,68 @@ function getRecipe() {
 }
 
 
-
-
-$("#searchButton").on("click", function(event) {
-event.preventDefault();
-
-var input = $("#searchField").val().trim();
-
-if (input === "") {
-
-return;
-
- }
-
-getRecipe();
- 
-
-})
-
-
-
-
 function renderList () {
 
-    $(".uk-container").text("")
+    $("#accordion").text("")
 
     for(var i = 0; i <= 9; i++){
         
         // recipe labels
         recipeSet[ setnumber*10+i ];
             
+        li = $("<li>")
         
 
-        recipeLabel = $("<ul>" + recipeSet[ setnumber*10+i ].recipe.label + "</ul>")
-        $(".uk-container").append(recipeLabel)
+        recipeLabel = $("<a>" + recipeSet[ setnumber*10+i ].recipe.label + "</a>")
+        recipeLabel.attr("href", "#")
+        recipeLabel.attr("data", `label-${i}`)
+        recipeLabel.addClass("uk-accordion-title")
         
+        
+        // accordion div
+        accordionDiv = $("<div>");
+        accordionDiv.addClass("uk-accordion-content")
+        accordionDiv.attr("data", `details-${i}`)
+        
+
         // recipe ingredients
 
+
+        
         $.each(recipeSet[ setnumber*10+i ].recipe.ingredientLines, function (index, value) {
             
-            recipeIngredients = $("<li>" + value + "</li>")
-            $(".uk-container").append(recipeIngredients)
+            
+
+            recipeIngredients = $("<div>" + value + "</div>")
+    
+        
+            
         })
+
 
         // recipe image
 
             recipeImg = $("<img>").css({ 'height': '150px', 'width': '200px' });
 
             recipeImg.attr("src", recipeSet[ setnumber*10+i ].recipe.image);
-            $(".uk-container").append(recipeImg)
+            
+           
 
         // recipe url
 
             recipeUrl = $("<div>");
             recipeUrlLink = $("<a>" + recipeSet[ setnumber*10+i ].recipe.url + "</a>");
             recipeUrl.append(recipeUrlLink);
-
-            $(".uk-container").append(recipeUrl)
             
-    
+        
 
+            accordionDiv.append(recipeIngredients,recipeImg, recipeUrl)
+            li.append(recipeLabel, accordionDiv)
+            $("#accordion").append(li)
+            
     }
-
-
+    
+   
 
 }
 
