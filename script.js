@@ -161,14 +161,15 @@ function renderList () {
 
         recipeLabel = $("<a>" + recipeSet[ setnumber*10+i ].recipe.label + "</a>")
         recipeLabel.attr("href", "#")
-        recipeLabel.attr("data", `label-${i}`)
+        // recipeLabel.attr("data", `label-${i}`)
+        recipeLabel.data("recipeId",recipeSet[ setnumber*10+i ].recipe.uri)
         recipeLabel.addClass("uk-accordion-title")
         
         
         // accordion div
         accordionDiv = $("<div>");
         accordionDiv.addClass("uk-accordion-content")
-        accordionDiv.attr("data", `details-${i}`)
+        // accordionDiv.attr("data", `details-${i}`)
         
 
         // recipe ingredients
