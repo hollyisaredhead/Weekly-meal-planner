@@ -63,6 +63,8 @@ var setnumber = 0;
 // getRecipe();
 
 
+
+
 $("#nextSet").on("click", function (event) {
     
 
@@ -121,59 +123,57 @@ function getRecipe() {
     
 
 
-    if (document.getElementById("vegan").checked = true) {
-        
-        var queryURL = queryURL.concat(healthLabel, vegan)
+        if (document.getElementById("vegan").checked === true) {
+            
+            var queryURL = queryURL.concat(healthLabel, vegan)
 
-    }
+        }
 
+        // if ( document.getElementById("balanced").checked = true) {
 
+        //     var queryURL = queryURL.concat(healthLabel, balanced)
+        // }
 
-    // if ( document.getElementById("balanced").checked = true) {
+        // if ( document.getElementById("low-fat").checked = true) {
 
-    //     var queryURL = queryURL.concat(healthLabel, balanced)
-    // }
+        //     var queryURL = queryURL.concat(healthLabel, lowFat)
+        // }
 
-    // if ( document.getElementById("low-fat").checked = true) {
+        // if ( document.getElementById("low-carb").checked = true) {
 
-    //     var queryURL = queryURL.concat(healthLabel, lowFat)
-    // }
+        //     var queryURL = queryURL.concat(healthLabel, lowCarb)
+        // }
 
-    // if ( document.getElementById("low-carb").checked = true) {
+        if ( document.getElementById("sugar-conscious").checked === true) {
 
-    //     var queryURL = queryURL.concat(healthLabel, lowCarb)
-    // }
+            var queryURL = queryURL.concat(healthLabel, sugarConscious)
+        }
 
-    // if ( document.getElementById("sugar-conscious").checked = true) {
+        if ( document.getElementById("peanut-free").checked === true) {
 
-    //     var queryURL = queryURL.concat(healthLabel, sugarConscious)
-    // }
+            var queryURL = queryURL.concat(healthLabel, peanutFree)
+        }
 
-    // if ( document.getElementById("peanut-free").checked = true) {
+        if ( document.getElementById("tree-nut-free").checked === true) {
 
-    //     var queryURL = queryURL.concat(healthLabel, peanutFree)
-    // }
+            var queryURL = queryURL.concat(healthLabel, treeNutFree)
+        }
 
-    // if ( document.getElementById("tree-nut-free").checked = true) {
+        if ( document.getElementById("vegetarian").checked === true) {
 
-    //     var queryURL = queryURL.concat(healthLabel, treeNutFree)
-    // }
+            var queryURL = queryURL.concat(healthLabel, vegetarian)
+        }
 
-    // if ( document.getElementById("alcohol-free").checked = true) {
+        // if ( document.getElementById("high-protein").checked = true) {
 
-    //     var queryURL = queryURL.concat(healthLabel, vegan)
-    // }
+        //     var queryURL = queryURL.concat(healthLabel, highProtein)
+        // }
 
-    // if ( document.getElementById("vegetarian").checked = true) {
+        if (document.getElementById("alcohol-free").checked === true) {
+            
+            var queryURL = queryURL.concat(healthLabel, alcoholFree)
 
-    //     var queryURL = queryURL.concat(healthLabel, vegetarian)
-    // }
-
-    // if ( document.getElementById("high-protein").checked = true) {
-
-    //     var queryURL = queryURL.concat(healthLabel, highProtein)
-    // }
-
+        }
 
     $.ajax({
         url: queryURL,
@@ -205,18 +205,21 @@ function getRecipe() {
 
 function renderList () {
 
+
+
     $("#accordion").text("")
 
     for(var i = 0; i <= 9; i++){
         
-        // recipe labels
+        // recipe labels 
         recipeSet[ setnumber*10+i ];
             
         li = $("<li>")
-        
+        li.addClass("uk-margin-top")
         
         addRecipeButton = $("<button>" + "+" + "</button>")
-        addRecipeButton.addClass("uk-margin-left")
+        addRecipeButton.addClass("uk-margin-left addRecipe")
+        
         
         recipeLabel = $("<a>" + recipeSet[ setnumber*10+i ].recipe.label + "</a>")
         recipeLabel.append(addRecipeButton)
@@ -228,7 +231,7 @@ function renderList () {
         recipeLabel.attr("data-recipe-id", recipeSet[ setnumber*10+i ].recipe.uri)
         // recipeLabel.attr("data", `label-${i}`)
         // recipeLabel.data("recipeId",recipeSet[ setnumber*10+i ].recipe.uri)
-        recipeLabel.addClass("uk-accordion-title")
+        recipeLabel.addClass("uk-accordion-title uk-margin-top")
         
         
         
@@ -265,8 +268,10 @@ function renderList () {
         // recipe image
 
             recipeImg = $("<img>").css({ 'height': '150px', 'width': '200px' });
-
+            
             recipeImg.attr("src", recipeSet[ setnumber*10+i ].recipe.image);
+
+            recipeImg.addClass("uk-text-center")
             
            
 
