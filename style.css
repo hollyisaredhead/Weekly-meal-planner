@@ -1,0 +1,32 @@
+
+h3{
+    color: white;
+
+}
+
+h5{
+    margin-top: 10px;
+}
+h6{
+    font-weight: bold;
+}
+
+li{
+    font-size: 12px;
+}
+
+.uk-navbar-container{
+    height: 40px;
+    
+ }
+ 
+.uk-button{
+    border-radius: 12px;
+    background-color: transparent;
+    color: white;
+    background-color: #53b2dd;
+}
+
+.uk-navbar-container:not(.uk-navbar-transparent) {
+    background: #53b2dd;
+}
