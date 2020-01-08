@@ -2,9 +2,9 @@ $(document).ready(function() {
 
 
 
-// input
-var input = document.getElementById('searchBar').value
-var queryURL = "https://api.edamam.com/search?q=" + input + "&from=0&to=100&app_id=de5d421e&app_key=3b067d8684260b2f7abcb8eb43481d4c" 
+// input    
+// var input = document.querySelector('#searchBar').value
+// var queryURL = "https://api.edamam.com/search?q=" + input + "&from=0&to=100&app_id=de5d421e&app_key=3b067d8684260b2f7abcb8eb43481d4c" 
 // health labels
 var healthLabel = "&health=";
 // diets
@@ -94,6 +94,7 @@ $("#searchButton").on("click", function(event) {
     event.preventDefault();
     
     
+    
 
     // var input = encodeURI(input)
     
@@ -113,13 +114,64 @@ $("#searchButton").on("click", function(event) {
     
 function getRecipe() {
     
+    var input = document.querySelector('#searchBar').value
+    var queryURL = "https://api.edamam.com/search?q=" + input + "&from=0&to=100&app_id=de5d421e&app_key=3b067d8684260b2f7abcb8eb43481d4c"
     
 
-    // var queryURL = queryURL.concat(healthLabel, treeNutFree)
-    
-    // var queryURL = queryURL.concat(healthLabel, vegetarian)
 
-    // if (checkbox == true) {}
+    if (document.getElementById("vegan").checked = true) {
+        
+        var queryURL = queryURL.concat(healthLabel, vegan)
+
+    }
+
+
+
+    // if ( document.getElementById("balanced").checked = true) {
+
+    //     var queryURL = queryURL.concat(healthLabel, balanced)
+    // }
+
+    // if ( document.getElementById("low-fat").checked = true) {
+
+    //     var queryURL = queryURL.concat(healthLabel, lowFat)
+    // }
+
+    // if ( document.getElementById("low-carb").checked = true) {
+
+    //     var queryURL = queryURL.concat(healthLabel, lowCarb)
+    // }
+
+    // if ( document.getElementById("sugar-conscious").checked = true) {
+
+    //     var queryURL = queryURL.concat(healthLabel, sugarConscious)
+    // }
+
+    // if ( document.getElementById("peanut-free").checked = true) {
+
+    //     var queryURL = queryURL.concat(healthLabel, peanutFree)
+    // }
+
+    // if ( document.getElementById("tree-nut-free").checked = true) {
+
+    //     var queryURL = queryURL.concat(healthLabel, treeNutFree)
+    // }
+
+    // if ( document.getElementById("alcohol-free").checked = true) {
+
+    //     var queryURL = queryURL.concat(healthLabel, vegan)
+    // }
+
+    // if ( document.getElementById("vegetarian").checked = true) {
+
+    //     var queryURL = queryURL.concat(healthLabel, vegetarian)
+    // }
+
+    // if ( document.getElementById("high-protein").checked = true) {
+
+    //     var queryURL = queryURL.concat(healthLabel, highProtein)
+    // }
+
 
     $.ajax({
         url: queryURL,
@@ -127,6 +179,8 @@ function getRecipe() {
 
 
     }).then(function(response) {
+        
+        
         console.log(queryURL);
        
         setnumber = 0;
@@ -158,31 +212,50 @@ function renderList () {
             
         li = $("<li>")
         
-
+        
+        addRecipeButton = $("<button>" + "+" + "</button>")
+        addRecipeButton.addClass("uk-margin-left")
+        
         recipeLabel = $("<a>" + recipeSet[ setnumber*10+i ].recipe.label + "</a>")
+        recipeLabel.append(addRecipeButton)
+        
+        
+
+
         recipeLabel.attr("href", "#")
+        recipeLabel.attr("data-recipe-id", recipeSet[ setnumber*10+i ].recipe.uri)
         // recipeLabel.attr("data", `label-${i}`)
-        recipeLabel.data("recipeId",recipeSet[ setnumber*10+i ].recipe.uri)
+        // recipeLabel.data("recipeId",recipeSet[ setnumber*10+i ].recipe.uri)
         recipeLabel.addClass("uk-accordion-title")
+        
         
         
         // accordion div
         accordionDiv = $("<div>");
         accordionDiv.addClass("uk-accordion-content")
         // accordionDiv.attr("data", `details-${i}`)
+
+        // ingredients header ul
+
+        ingredientsUl = $("<ul>" + 'Ingredients' + "</ul>");
+        ingredientsUl.addClass("")
+
         
 
         // recipe ingredients
 
+        
 
         
         $.each(recipeSet[ setnumber*10+i ].recipe.ingredientLines, function (index, value) {
             
             
 
-            recipeIngredients = $("<div>" + value + "</div>")
+            recipeIngredients = $("<li>" + value + "</li>")
+            recipeIngredients.addClass("uk-padding-small")
     
-        
+            ingredientsUl.append(recipeIngredients)
+
             
         })
 
@@ -203,7 +276,7 @@ function renderList () {
             
         
 
-            accordionDiv.append(recipeIngredients,recipeImg, recipeUrl)
+            accordionDiv.append(recipeImg, ingredientsUl, recipeUrl)
             li.append(recipeLabel, accordionDiv)
             $("#accordion").append(li)
             
