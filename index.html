@@ -25,6 +25,8 @@
     <!--Css Script-->
     <link rel="stylesheet" href="style.css">
 
+    
+
 
 </head>
 
@@ -46,6 +48,8 @@
 
         <div uk-grid>
             <div class="uk-width-1-2@m uk-width-*@s">
+                <br>
+                <hr class="uk-divider-icon">
                 <h5>What would you like to eat?</h5>
 
 
@@ -96,7 +100,7 @@
                     <li> <label><input class="uk-checkbox" id="lactoseIntolerant" type="checkbox"> Dairy-free</label>
                     </li> -->
 
-
+                    <hr class="uk-divider-icon">
 
                 <div class="uk-container">
 
@@ -160,8 +164,10 @@
 
                     </ul>
                     <div class="uk-text-center">
-                        <button id="previousSet" class="uk-button uk-button default uk-button-small">Previous</button>
-                        <button id="nextSet" class="uk-button uk-button default uk-button-small">Next</button>
+                      
+                        
+                        <button id="previousSet" class="uk-button uk-button default uk-button-small"><span uk-icon="chevron-double-left"></span> Previous</button>
+                        <button id="nextSet" class="uk-button uk-button default uk-button-small">Next<span uk-icon="chevron-double-right"></span></button>
                     </div>
 
                     <!--Previous/Next recipe buttons-->
@@ -275,9 +281,10 @@
                 </table>
                 <div class="uk-grid uk-margin-remove">
                     <div class="uk-align-center uk-padding-remove">
-                        <a href="" class="uk-slidenav-small " uk-slidenav-previous></a>
+                        
+                        <a href="" class="uk-slidenav-small "><span uk-icon="chevron-double-left"></span></a>
                         <button class="uk-button uk-button-default" id="goToCurrentWeek">Current Week</button>
-                        <a href="" class="uk-slidenav-small" uk-slidenav-next></a>
+                        <a href="" class="uk-slidenav-small"><span uk-icon="chevron-double-right"></a>
                     </div>
                 </div>
 
@@ -337,10 +344,11 @@
     </div>
 
     <script type="text/javascript" src="moment.js"></script>
-    <script type="text/javascript" src="jsonMock.js"></script>
-    <script type="text/javascript" src="googleCalScript.js"></script>
+    <!-- <script type="text/javascript" src="jsonMock.js"></script> -->
     <!-- link to Javascript -->
     <script src="script.js"></script>
+    <script type="text/javascript" src="googleCalScript.js"></script>
+    
 </body>
 
 </html>

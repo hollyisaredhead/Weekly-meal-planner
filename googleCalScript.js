@@ -1,9 +1,21 @@
 $(document).ready(function () {
 
+
+    // $(".addToCal").on("click", function (event) {
+    //     event.stopPropagation();
+    // });
+
     var eventsLocal = [];
-    var recipeHits = recipeSet.hits;
+    const eventsLocalStoreVar = "eventsLocal";
+    var recipeHits = recipeSet;
     var recipeDetails;
     var dayOfWeek, weekStartDt, weekStartDtISO, weekEndDt, weekEndDtISO;
+
+    // get the events from local storage
+    if (localStorage.getItem(eventsLocalStoreVar) != undefined &&
+        localStorage.getItem(eventsLocalStoreVar) != null) {
+        eventsLocal = JSON.parse(localStorage.getItem(eventsLocalStoreVar));
+    }
 
     // Set weekly calendar to current
     goToCurrentWeek();
@@ -136,17 +148,28 @@ $(document).ready(function () {
 
             if (events.length > 0) {
                 for (i = 0; i < events.length; i++) {
+
                     var event = events[i];
-                    // var when = event.start.dateTime;
-                    var when = moment(event.start.dateTime).format("dddd, MM/DD/YYYY");
+                    var when = moment(event.start.dateTime).format("MM/DD/YYYY");
 
-                    var day = moment(event.start.dateTime).day();
+                    // First check if the event is stored in the local storage
+                    // We do not want to display events other than for meals
+                    var eventsForDay = eventsLocal.filter(object => { return object.date == when });
 
-                    var eventHolderId = "#day" + (day + 1) + "-events";
-                    var mealItem = $("<div class='mealEvent uk-button-primary uk-margin-small-bottom uk-padding-small uk-padding-remove-bottom uk-padding-remove-right uk-padding-remove-top'>");
-                    mealItem.text(event.summary);
+                    if (eventsForDay.find(object => { return object.recipe.uri.slice(-32) === event.id.slice(-32) }) != undefined) {
 
-                    $(eventHolderId).append(mealItem);
+                        // Display the event
+
+                        var day = moment(event.start.dateTime).day();
+
+                        var eventHolderId = "#day" + (day + 1) + "-events";
+                        var mealItem = $("<div class='mealEvent uk-button-primary uk-margin-small-bottom uk-padding-small uk-padding-remove-bottom uk-padding-remove-right uk-padding-remove-top'>");
+                        mealItem.text(event.summary);
+                        mealItem.attr("data-recipe-id",event.id.slice(-32));
+
+                        $(eventHolderId).append(mealItem);
+
+                    }
 
                 }
             } else {
@@ -162,11 +185,14 @@ $(document).ready(function () {
 
         event.preventDefault();
 
-        recipeDetails
+
         // get start date/time from popper window
-        var startDateTime = moment($(".mealDate").val() + "T" + $(".mealTime").val()).format();
-        var endTime = moment($(".mealTime").val()).add(recipeDetails.totalTime, "minutes");
-        var endDateTime = moment($(".mealDate").val() + "T" + endTime).format();
+        var startDateTime = moment($("#mealDate").val() + "T" + $("#mealTime").val()).format();
+        var totalTime = recipeDetails.recipe.totalTime;
+        if (totalTime == 0) { totalTime = 60.0 };   // if recipe time is not available, default to 60 min
+        var endDateTime = moment(startDateTime).add(totalTime, "minutes");
+        endDateTime = moment(endDateTime).format();
+
 
         // close the Popper element if it is visible
         document.querySelector("#dateTimePicker").classList.add("uk-hidden");
@@ -178,22 +204,20 @@ $(document).ready(function () {
         var authInst = gapi.auth2.getAuthInstance();
         var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token=' + authInst.currentUser.Ab.Zi.access_token;
 
+        var id = moment().format("YYYYMMDDHHmmss") + recipeDetails.recipe.uri.slice(-32);
         var event = {
-            'summary': 'A Great Recipe',
-            //'location': '800 Howard St., San Francisco, CA 94103',
-            'description': 'This is how you make tasty food',
+            'summary': recipeDetails.recipe.label,
+            'description': recipeDetails.recipe.url,
+            "id": id,
             'colorId': "2",
             'start': {
-                'dateTime': '2020-01-01T21:00:00-08:00',
+                'dateTime': startDateTime,  // format --- '2020-01-01T21:00:00-08:00'
                 'timeZone': 'America/Los_Angeles'
             },
             'end': {
-                'dateTime': '2020-01-01T22:00:00-08:00',
+                'dateTime': endDateTime,    // format --- '2020-01-01T22:00:00-08:00'
                 'timeZone': 'America/Los_Angeles'
             },
-            // 'recurrence': [
-            //     'RRULE:FREQ=DAILY;COUNT=2'
-            // ],
             // 'attendees': [
             //     { 'email': 'lpage@example.com' },
             //     { 'email': 'sbrin@example.com' }
@@ -214,9 +238,15 @@ $(document).ready(function () {
             'method': 'post',
             'contentType': 'application/json ; charset=UTF-8',
             // 'headers': headers,
-            'data': JSON.stringify(event)
+            'data': JSON.stringify(event),
+            "success": function () {
+                // Add the event to local storage
+                saveToLocalStorage(moment(startDateTime).format("MM/DD/YYYY"), recipeDetails.recipe);
+
+            }
         }).then(function (response) {
-            console.log(response);
+            // refresh the calendar
+             getUpcomingEvents();
         });
 
     }
@@ -256,11 +286,12 @@ $(document).ready(function () {
         event.preventDefault();
 
         var refEle = this;
+        var recipeDetails = eventsLocal.find(object => { return object.recipe.uri.slice(-32) === event.target.dataset.recipeId });
 
-        $("#mealImage").attr("src", recipeHits[2].recipe.image);
-        $("#mealName").text(recipeHits[2].recipe.label);
-        $("#mealDetails").attr("href", recipeHits[2].recipe.url);
-        $("#mealDetails").text(recipeHits[2].recipe.url);
+        $("#mealImage").attr("src", recipeDetails.recipe.image);
+        $("#mealName").text(recipeDetails.recipe.label);
+        $("#mealDetails").attr("href", recipeDetails.recipe.url);
+        $("#mealDetails").text(recipeDetails.recipe.url);
 
         var popupEle = document.querySelector("#popupBubble");
         popupEle.classList.remove("uk-hidden");
@@ -309,7 +340,7 @@ $(document).ready(function () {
 
         // Set default value for event date and time
         mealDate.val(moment().format("YYYY-MM-DD"));
-        mealTime.val(moment().format("HH:MM"));
+        mealTime.val(moment().format("HH:mm"));
 
         console.log(mealDate.val() + "T" + mealTime.val());
 
@@ -334,7 +365,7 @@ $(document).ready(function () {
         // get the recipe
         var recipeID = event.target.parentNode.dataset.recipeId;
 
-        recipeDetails = recipeHits.find(obj => { return obj.uri === recipeID });
+        recipeDetails = recipeHits.find(obj => { return obj.recipe.uri === recipeID });
 
         dateTimePicker(event);
     });
@@ -387,6 +418,20 @@ $(document).ready(function () {
         weekStartDtISO = moment(weekStartDt, moment.ISO_8601).toISOString();
         weekEndDt = moment().add((7 - dayOfWeek), 'days');
         weekEndDtISO = moment(weekEndDt, moment.ISO_8601).toISOString();
+    }
+
+
+
+    function saveToLocalStorage(date, recipe) {
+        eventsLocal.push({
+            "date": date,
+            "recipe": recipe
+        });
+        // clear the storage first
+        localStorage.removeItem(eventsLocalStoreVar);
+        // add it back again with updated values
+        localStorage.setItem(eventsLocalStoreVar, JSON.stringify(eventsLocal));
+
     }
 
 });

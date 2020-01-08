@@ -13,13 +13,19 @@ h6{
 
 li{
     font-size: 12px;
+    font-weight: 4px;
 }
 
 .uk-navbar-container{
     height: 40px;
     
  }
+
+ .uk-navbar-container:not(.uk-navbar-transparent) {
+    background: #53b2dd;
+}
  
+
 .uk-button{
     border-radius: 12px;
     background-color: transparent;
@@ -27,6 +33,24 @@ li{
     background-color: #53b2dd;
 }
 
-.uk-navbar-container:not(.uk-navbar-transparent) {
-    background: #53b2dd;
+
+
+/* for the accordian styles */
+.uk-padding-small{
+    font-size: 12px;
+    padding: 2px;
+} 
+
+img{
+    float: right;
+    border-radius: 8px;
+}
+
+a{
+    color: #53b2dd;
+    
+}
+
+a:hover{
+    color: black;
 }

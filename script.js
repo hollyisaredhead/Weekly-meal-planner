@@ -1,3 +1,5 @@
+var recipeSet = [];
+
 $(document).ready(function() {
 
 
@@ -55,7 +57,7 @@ var southEastAsian = "South East Asian";
 
 
 
-var recipeSet = [];
+
 var setnumber = 0;
 
 // getRecipe();
