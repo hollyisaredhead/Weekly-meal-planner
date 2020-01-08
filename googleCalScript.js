@@ -328,7 +328,9 @@ $(document).ready(function () {
     }
 
     $(document).on('click', '.addRecipe', function (event) {
+       
         event.preventDefault();
+        event.stopPropagation();
         // get the recipe
         var recipeID = event.target.parentNode.dataset.recipeId;
 
