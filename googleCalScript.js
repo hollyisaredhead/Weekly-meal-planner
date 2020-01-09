@@ -7,7 +7,6 @@ $(document).ready(function () {
 
     var eventsLocal = [];
     const eventsLocalStoreVar = "eventsLocal";
-    var recipeHits = recipeSet;
     var recipeDetails;
     var dayOfWeek, weekStartDt, weekStartDtISO, weekEndDt, weekEndDtISO;
 
@@ -365,7 +364,7 @@ $(document).ready(function () {
         // get the recipe
         var recipeID = event.target.parentNode.dataset.recipeId;
 
-        recipeDetails = recipeHits.find(obj => { return obj.recipe.uri === recipeID });
+        recipeDetails = recipeSet.find(obj => { return obj.recipe.uri === recipeID });
 
         dateTimePicker(event);
     });
@@ -378,8 +377,8 @@ $(document).ready(function () {
     //--------------------------------------------------------//
     //               Calendar Navigation                       
     //--------------------------------------------------------//
-    var calNavPrev = $("a[uk-slidenav-previous]");
-    var calNavNext = $("a[uk-slidenav-next]");
+    var calNavPrev = $("a[data-cal-previous]");
+    var calNavNext = $("a[data-cal-next]");
     var calNavCurr = $("#goToCurrentWeek");
     calNavPrev.on("click", navCal);
     calNavNext.on("click", navCal);
