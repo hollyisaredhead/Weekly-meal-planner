@@ -267,7 +267,7 @@ function renderList () {
 
         // recipe image
 
-            recipeImg = $("<img>").css({ 'height': '150px', 'width': '200px' });
+        recipeImg = $("<img>").css({ 'height': '150px', 'width': '200px', 'float': 'right'});
             
             recipeImg.attr("src", recipeSet[ setnumber*10+i ].recipe.image);
 
