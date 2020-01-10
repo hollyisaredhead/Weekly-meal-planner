@@ -24,9 +24,13 @@
       
     <!--Css Script-->
     <link rel="stylesheet" href="style.css">
+
+
+    <!--google font-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
 
 
 </head>
@@ -36,9 +40,9 @@
         <div class="uk-navbar-center">
 
             <ul class="uk-navbar-nav">
-               
-                    <h3>Weekly Meal Planner</h3>
-           
+
+                <h2>Weekly Meal Planner</h2>
+
 
         </div>
 
@@ -51,35 +55,32 @@
             <div class="uk-width-1-2@m uk-width-*@s">
                 <br>
                 <hr class="uk-divider-icon">
-                <h5>What would you like to eat?</h5>
+                <h4>What would you like to eat?</h4>
 
 
                 <!--Recipe search-->
                 <div class="uk-margin">
-                        
-                    <form class="uk-search uk-search-default">
+
+
+                    <form class="uk-search uk-search-default uk-width-5-6">
+
                         <span uk-search-icon></span>
                         <input id="searchBar" class="uk-search-input" type="search" placeholder="Enter here">
                     </form>
 
-                    <button class="uk-button uk-button-default uk-button-small" button id="searchButton">Search</span></button>
+                    <button class="uk-button uk-button-default uk-button-small" button
+                        id="searchButton">Search</span></button>
 
                 </div>
 
                 <!--Checkboxes containing search parameters/filters-->
                 <div class="uk-flex-inline ">
                     <h6>Diets &nbsp; &nbsp; </h6>
-                    <!-- <li> <label><input class="uk-checkbox" id="balanced" type="checkbox"> Balanced&nbsp; &nbsp;</label>
-                    </li> -->
-                    <!-- <li> <label><input class="uk-checkbox" id="high-protein" type="checkbox"> High-Protein&nbsp;
+                    <li> <label><input class="uk-checkbox" id="sugar-conscious" type="checkbox"> Sugar-Conscious&nbsp;
                             &nbsp;</label>
                     </li>
-                    <li> <label><input class="uk-checkbox" id="low-fat" type="checkbox"> Low-Fat&nbsp; &nbsp;</label>
-                    </li>
-                    <li> <label><input class="uk-checkbox" id="low-carb" type="checkbox"> Low-Carb&nbsp; &nbsp;</label></li> -->
-                    <li> <label><input class="uk-checkbox" id="sugar-conscious" type="checkbox"> Sugar-Conscious&nbsp; &nbsp;</label>
-                    </li>
-                    <li> <label><input class="uk-checkbox" id="peanut-free" type="checkbox"> Peanut-Free&nbsp; &nbsp;</label>
+                    <li> <label><input class="uk-checkbox" id="peanut-free" type="checkbox"> Peanut-Free&nbsp;
+                            &nbsp;</label>
                     </li>
 
                     <li> <label><input class="uk-checkbox" id="tree-nut-free" type="checkbox"> Tree-Nut-Free&nbsp;
@@ -87,78 +88,19 @@
                             
                 </div>
                 <div class="uk-flex-inline">
-                    
-                    <li> <label><input class="uk-checkbox uk-margin-left" id="alcohol-free" type="checkbox"> Alcohol-Free&nbsp; &nbsp;</label></li>
+
+                    <li> <label><input class="uk-checkbox" id="alcohol-free" type="checkbox"> Alcohol-Free&nbsp;
+                            &nbsp;</label></li>
+
                     <li> <label><input class="uk-checkbox" id="vegan" type="checkbox"> Vegan&nbsp; &nbsp;</label></li>
-                    <li> <label><input class="uk-checkbox" id="vegetarian" type="checkbox"> Vegetarian&nbsp; &nbsp;</label>
+                    <li> <label><input class="uk-checkbox" id="vegetarian" type="checkbox"> Vegetarian&nbsp;
+                            &nbsp;</label>
                     </li>
                 </div>
-                <!-- <li> <label><input class="uk-checkbox" id="keto" type="checkbox"> Keto&nbsp; &nbsp;</label></li>
-                    <li> <label><input class="uk-checkbox" id="pesca" type="checkbox"> Pescatarian&nbsp; &nbsp;</label>
-                    </li>
-                    <li> <label><input class="uk-checkbox" id="vegan" type="checkbox"> Vegan&nbsp; &nbsp;</label></li>
-                    <li> <label><input class="uk-checkbox" id="vegetarian" type="checkbox"> Vegetarian</label></li>
-                    <li> <label><input class="uk-checkbox" id="gluten" type="checkbox"> Gluten-free</label></li>
-                    <li> <label><input class="uk-checkbox" id="lactoseIntolerant" type="checkbox"> Dairy-free</label>
-                    </li> -->
-
-                    <hr class="uk-divider-icon">
+                
+                <hr class="uk-divider-icon">
 
                 <div class="uk-container">
-
-                    <!-- This is a button -->
-<!-- 
-                    <button class="uk-button uk-button-default" type="button">Cuisines</button>
-                    <div class="uk-width-large" uk-dropdown>
-                        <div class="uk-dropdown-grid uk-child-width-1-2@m" uk-grid>
-                            <div>
-                                <ul class="uk-nav uk-dropdown-nav">
-                                    <li> <label><input class="uk-checkbox" id="american" type="checkbox">
-                                            American</label></li>
-                                    <li> <label><input class="uk-checkbox" id="asian" type="checkbox"> Asian</label>
-                                    </li>
-                                    <li> <label><input class="uk-checkbox" id="british" type="checkbox"> British</label>
-                                    </li>
-                                    <li> <label><input class="uk-checkbox" id="caribbean" type="checkbox">
-                                            Caribbean</label></li>
-                                    <li> <label><input class="uk-checkbox" id="centralEurope" type="checkbox"> Central
-                                            Europe</label></li>
-                                    <li> <label><input class="uk-checkbox" id="chinese" type="checkbox"> Chinese</label>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul class="uk-nav uk-dropdown-nav">
-                                    <li> <label><input class="uk-checkbox" id="easternEurope" type="checkbox"> Eastern
-                                            Europe</label></li>
-                                    <li> <label><input class="uk-checkbox" id="french" type="checkbox"> French</label>
-                                    </li>
-                                    <li> <label><input class="uk-checkbox" id="indian" type="checkbox"> Italian</label>
-                                    </li>
-                                    <li> <label><input class="uk-checkbox" id="japanese" type="checkbox">
-                                            Japanese</label></li>
-                                    <li> <label><input class="uk-checkbox" id="kosher" type="checkbox"> Kosher</label>
-                                    </li>
-                                    <li> <label><input class="uk-checkbox" id="mediterranean" type="checkbox">
-                                            Mediterranean</label></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul class="uk-nav uk-dropdown-nav">
-                                    <li> <label><input class="uk-checkbox" id="mexican" type="checkbox"> Mexican</label>
-                                    </li>
-                                    <li> <label><input class="uk-checkbox" id="middleEastern" type="checkbox"> Middle
-                                            Eastern</label></li>
-                                    <li> <label><input class="uk-checkbox" id="nordic" type="checkbox"> Nordic</label>
-                                    </li>
-                                    <li> <label><input class="uk-checkbox" id="southAmerican" type="checkbox"> South
-                                            American</label></li>
-                                    <li> <label><input class="uk-checkbox" id="southEastAsian" type="checkbox"> South
-                                            East Asian</label></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div> -->
 
                     <!--Recipes search return will appear here-->
                     <ul class="uk-accordion" data-uk-accordion id="accordion">
@@ -166,52 +108,24 @@
 
                     </ul>
                     <div class="uk-text-center">
-                      
-                        
-                        <button id="previousSet" class="uk-button uk-button default uk-button-small"><span uk-icon="chevron-double-left"></span> Previous</button>
-                        <button id="nextSet" class="uk-button uk-button default uk-button-small">Next<span uk-icon="chevron-double-right"></span></button>
+
+
+                        <button id="previousSet" class="uk-button uk-button default uk-button-small"><span
+                                uk-icon="chevron-double-left"></span> Previous</button>
+                        <button id="nextSet" class="uk-button uk-button default uk-button-small">Next<span
+                                uk-icon="chevron-double-right"></span></button>
                     </div>
-
-                    <!--Previous/Next recipe buttons-->
-                    <!-- <ul class="uk-pagination uk-flex-center">
-                        <li><a href="#"><span class="uk-margin-small-right" uk-pagination-previous></span> </a></li>
-                        <li class="uk-margin-auto-center"><a href="#"><span class="uk-margin-small-left"
-                                    uk-pagination-next></span></a></li>
-                    </ul> -->
-
 
                 </div>
             </div>
 
             <div class="uk-width-1-2@m uk-width-*@s">
-                <!-- <h5>Meal Plan</h5>
-
-                Span id will populate with weeks days
-                <ul class="uk-list uk-list-striped">
-                    <li> <span id="Monday"></span> Monday
-                       Popper will include recipe title with clickable link to recipe page & ingredients
-                        <a href= "">Recipe Title</a><br>
-                        <p>Ingredients</p>
-                    </li>
-                    <li> <span id="Tuesday"></span> Tuesday</li>
-                    <li> <span id="Wednesday"></span> Wednesday</li>
-                    <li> <span id="Thursday"></span> Thursday</li>
-                    <li> <span id="Friday"></span> Friday</li>
-                    <li> <span id="Saturday"></span> Saturday</li>
-                    <li> <span id="Sunday"></span> Sunday</li>
-                </ul>
-
-
-                <ul class="uk-pagination uk-flex-center">
-                    <li><a href="#"><span class="uk-margin-small-right" uk-pagination-previous></span> </a></li>
-                    <li class="uk-margin-auto-center"><a href="#"><span class="uk-margin-small-left"
-                                uk-pagination-next></span></a></li>
-                </ul> -->
+                <!-- <h5>Meal Plan</h5> -->
 
                 <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
-                    <h5 class="uk-navbar-center">
+                    <h3 class="uk-navbar-center">
                         Weekly Calendar
-                    </h5>
+                    </h3>
                 </nav>
                 <table class="uk-table uk-table-striped">
 
@@ -290,16 +204,14 @@
                     </div>
                 </div>
 
-            
+
 
             </div>
 
         </div>
 
-
-
         <!-- Popper element for meal preview in hidden state -->
-        <div class="popper uk-width-1-4 uk-hidden uk-box-shadow-large" id="popupBubble">
+        <div class="popper uk-width-5-6 uk-width-1-4@m uk-width-1-3@m uk-hidden uk-box-shadow-large" id="popupBubble">
             <div class="uk-card uk-card-default">
                 <div class="uk-card-media-top">
                     <img src="" class="uk-align-center" id="mealImage" alt="">
@@ -312,7 +224,7 @@
         </div>
 
         <!-- Popper element for adding event in hidden state -->
-        <div class="popper uk-width-1-4 uk-background-muted uk-padding uk-panel uk-hidden uk-box-shadow-large"
+        <div class="popper uk-width-5-6 uk-width-1-4@m uk-width-1-3@m uk-background-muted uk-padding uk-panel uk-hidden uk-box-shadow-large"
             id="dateTimePicker">
 
             <form class="uk-form-stacked">
@@ -343,11 +255,10 @@
     </div>
 
     <script type="text/javascript" src="moment.js"></script>
-    <!-- <script type="text/javascript" src="jsonMock.js"></script> -->
     <!-- link to Javascript -->
     <script src="script.js"></script>
     <script type="text/javascript" src="googleCalScript.js"></script>
-    
+
 </body>
 
 </html>
