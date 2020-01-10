@@ -238,7 +238,7 @@ function renderList () {
         accordionDiv.css("border-radius", "15px")
         // accordionDiv.attr("data", `details-${i}`)
 
-        IngredientsDiv = $("<h2>" + "Ingredients:" + "</h2>")
+        IngredientsDiv = $("<h3>" + "Ingredients:" + "</h3>")
         IngredientsDiv.addClass("uk-margin-left uk-margin-top")
         // ingredients header ul
 
@@ -272,6 +272,7 @@ function renderList () {
             recipeImg.attr("src", recipeSet[ setnumber*10+i ].recipe.image);
 
             recipeImg.addClass("uk-margin-top uk-margin-right")
+            recipeImg.css("float", "right")
             
            
 
