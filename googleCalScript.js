@@ -162,7 +162,7 @@ $(document).ready(function () {
                         var day = moment(event.start.dateTime).day();
 
                         var eventHolderId = "#day" + (day + 1) + "-events";
-                        var mealItem = $("<div class='mealEvent uk-button-primary uk-margin-small-bottom uk-padding-small uk-padding-remove-bottom uk-padding-remove-right uk-padding-remove-top'>");
+                        var mealItem = $("<div class='mealEvent uk-button-primary uk-margin-small-bottom'>");
                         mealItem.text(event.summary);
                         mealItem.attr("data-recipe-id", event.id.slice(-32));
                         mealItem.attr("data-event-id", event.id);
