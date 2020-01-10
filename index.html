@@ -21,13 +21,14 @@
         integrity="sha256-x3YZWtRjM8bJqf48dFAv/qmgL68SI4jqNWeSLMZaMGA=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper-utils.min.js"
         integrity="sha256-dIUk9DKD/v0o1fxg+PjgACxiS8VyUc+bD7zya8qYsi8=" crossorigin="anonymous"></script>
-
+      
     <!--Css Script-->
     <link rel="stylesheet" href="style.css">
 
 
     <!--google font-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
     
 
 
@@ -60,7 +61,9 @@
                 <!--Recipe search-->
                 <div class="uk-margin">
 
+
                     <form class="uk-search uk-search-default uk-width-5-6">
+
                         <span uk-search-icon></span>
                         <input id="searchBar" class="uk-search-input" type="search" placeholder="Enter here">
                     </form>
@@ -82,11 +85,13 @@
 
                     <li> <label><input class="uk-checkbox" id="tree-nut-free" type="checkbox"> Tree-Nut-Free&nbsp;
                             &nbsp;</label></li>
+                            
                 </div>
                 <div class="uk-flex-inline">
 
                     <li> <label><input class="uk-checkbox" id="alcohol-free" type="checkbox"> Alcohol-Free&nbsp;
                             &nbsp;</label></li>
+
                     <li> <label><input class="uk-checkbox" id="vegan" type="checkbox"> Vegan&nbsp; &nbsp;</label></li>
                     <li> <label><input class="uk-checkbox" id="vegetarian" type="checkbox"> Vegetarian&nbsp;
                             &nbsp;</label>
@@ -98,7 +103,7 @@
                 <div class="uk-container">
 
                     <!--Recipes search return will appear here-->
-                    <ul uk-accordion id="accordion">
+                    <ul class="uk-accordion" data-uk-accordion id="accordion">
 
 
                     </ul>
