@@ -58,7 +58,7 @@ var recipeSet = [];
 
     // getRecipe();
 
-
+    $(document).ready(function () {
 
 
     $("#nextSet").on("click", function (event) {
@@ -186,7 +186,7 @@ var recipeSet = [];
 
             renderList();
 
-
+        })
 
 
             // user click on next set
@@ -296,5 +296,6 @@ function renderList () {
    
 
 }
-
+    }
+        
 });
