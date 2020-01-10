@@ -93,6 +93,7 @@ var recipeSet = [];
     $("#searchButton").on("click", function (event) {
         event.preventDefault();
 
+        $(".spinner").attr("uk-spinner", "uk-spinner")
 
 
 
@@ -178,12 +179,13 @@ var recipeSet = [];
 
         }).then(function (response) {
 
-
+            $(".spinner").removeAttr("uk-spinner", "uk-spinner")
+            
             console.log(queryURL);
 
             setnumber = 0;
             recipeSet = response.hits
-
+            
             renderList();
 
         })
@@ -195,9 +197,10 @@ var recipeSet = [];
 
 function renderList () {
 
-
+  
 
     $("#accordion").text("")
+    
 
     for(var i = 0; i <= 9; i++){
         
@@ -225,7 +228,7 @@ function renderList () {
 
 
         recipeLabel.attr("href", "#")
-        recipeLabel.attr("data-recipe-id", recipeSet[ setnumber*10+i ].recipe.uri)
+        addRecipeButton.attr("data-recipe-id", recipeSet[ setnumber*10+i ].recipe.uri)
         // recipeLabel.attr("data", `label-${i}`)
         // recipeLabel.data("recipeId",recipeSet[ setnumber*10+i ].recipe.uri)
         recipeLabel.addClass("uk-accordion-title uk-margin-top uk-margin-left")
@@ -298,5 +301,8 @@ function renderList () {
 
 }
     }
+
+    
+    
         
 });
