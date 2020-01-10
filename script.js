@@ -225,7 +225,6 @@ function renderList () {
        
         
 
-
         recipeLabel.attr("href", "#")
         addRecipeButton.attr("data-recipe-id", recipeSet[ setnumber*10+i ].recipe.uri)
         // recipeLabel.attr("data", `label-${i}`)
