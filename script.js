@@ -215,8 +215,9 @@ function renderList () {
         // recipe labels 
         recipeSet[ setnumber*10+i ];
             
-        li = $("<li>")
+        li = $("<div>")
         li.addClass("uk-margin-top uk-background-default")
+
         
         
         addRecipeButton = $("<button>")
@@ -248,9 +249,11 @@ function renderList () {
         accordionDiv.css("border-radius", "15px")
         // accordionDiv.attr("data", `details-${i}`)
 
+        IngredientsDiv = $("<h2>" + "Ingredients:" + "</h2>")
+        IngredientsDiv.addClass("uk-margin-left uk-margin-top")
         // ingredients header ul
 
-        ingredientsUl = $("<ul>" + 'Ingredients' + "</ul>");
+        ingredientsUl = $("<ul>");
         ingredientsUl.addClass("")
 
         
@@ -275,7 +278,7 @@ function renderList () {
 
         // recipe image
 
-            recipeImg = $("<img>").css({ 'height': '150px', 'width': '250px' });
+            recipeImg = $("<img>").css({ 'height': '150px', 'width': '200px' });
             
             recipeImg.attr("src", recipeSet[ setnumber*10+i ].recipe.image);
 
@@ -295,7 +298,7 @@ function renderList () {
             
         
 
-            accordionDiv.append(recipeImg, ingredientsUl, recipeUrl)
+            accordionDiv.append(IngredientsDiv, recipeImg, ingredientsUl, recipeUrl)
             li.append(recipeLabel, accordionDiv)
             $("#accordion").append(li)
             
