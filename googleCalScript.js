@@ -166,7 +166,8 @@ $(document).ready(function () {
                         mealItem.text(event.summary);
                         mealItem.attr("data-recipe-id", event.id.slice(-32));
                         mealItem.attr("data-event-id", event.id);
-                        var mealDelete = $("<a class='uk-button-danger uk-border-circle uk-align-right uk-padding-remove uk-margin-remove mealDelete' uk-icon='minus-circle' uk-tooltip='title: Delete Meal from Calendar'>");
+                        var mealDelete = $("<a class='uk-button-danger uk-align-right uk-padding-remove uk-margin-remove mealDelete' uk-icon='trash' uk-tooltip='title: Delete Meal from Calendar'>");
+
 
                         mealItem.append(mealDelete);
                         $(eventHolderId).append(mealItem);
@@ -419,7 +420,7 @@ $(document).ready(function () {
 
         // Update the calendar start and end dates based on whether
         // previous week is selector or next
-        if (this.hasAttribute("uk-slidenav-previous")) {
+        if (this.hasAttribute("data-cal-previous")) {
             weekStartDt = moment(weekStartDt).subtract(7, 'days');
             weekStartDtISO = moment(weekStartDt, moment.ISO_8601).toISOString();
             weekEndDt = moment(weekEndDt).subtract(7, 'days');
@@ -460,3 +461,4 @@ $(document).ready(function () {
     }
 
 });
+
