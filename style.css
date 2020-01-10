@@ -5,7 +5,7 @@ h2{
 }
 
 h3{
-    margin-top: 10px;
+    margin-top: 20px;
     font-family: 'Montserrat', sans-serif;
 }
 h6{
@@ -28,7 +28,7 @@ li{
 }
 
 .uk-navbar-container{
-    height: 45px;
+    height: 55px;
     
  }
 
@@ -36,6 +36,9 @@ li{
     background: #53b2dd;
 }
  
+.uk-search {
+ margin-top: 2px;
+}
 
 .uk-button{
     border-radius: 12px;
