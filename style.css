@@ -1,19 +1,25 @@
 
 h3{
     color: white;
-
+    font-family: 'Montserrat', sans-serif;
 }
 
-h5{
+h4{
     margin-top: 10px;
+    font-family: 'Montserrat', sans-serif;
 }
 h6{
     font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+h5{
+    font-family: 'Montserrat', sans-serif;
 }
 
 li{
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 4px;
+    font-family: 'Libre Baskerville', serif;
 }
 
 .uk-navbar-container{
@@ -31,6 +37,8 @@ li{
     background-color: transparent;
     color: white;
     background-color: #53b2dd;
+    font-family: 'Oswald', sans-serif;
+
 }
 
 
@@ -42,7 +50,7 @@ li{
 } 
 
 img{
-    float: right;
+    /* float: right; */
     border-radius: 8px;
 }
 
@@ -54,3 +62,16 @@ a{
 a:hover{
     color: black;
 }
+
+/* Preview modal*/
+
+#mealName{
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+#mealDetails{
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+}
+
