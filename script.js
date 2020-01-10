@@ -198,7 +198,7 @@ var recipeSet = [];
 function renderList () {
 
   
-
+    $(".spinner").remove();
     $("#accordion").text("")
     
 
