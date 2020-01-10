@@ -168,6 +168,7 @@ $(document).ready(function () {
                         mealItem.attr("data-event-id", event.id);
                         var mealDelete = $("<a class='uk-button-danger uk-align-right uk-padding-remove uk-margin-remove mealDelete' uk-icon='trash' uk-tooltip='title: Delete Meal from Calendar'>");
 
+
                         mealItem.append(mealDelete);
                         $(eventHolderId).append(mealItem);
 
@@ -460,3 +461,4 @@ $(document).ready(function () {
     }
 
 });
+
