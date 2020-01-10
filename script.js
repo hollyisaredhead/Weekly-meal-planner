@@ -224,7 +224,6 @@ function renderList () {
         addRecipeButton.css("float", "right");
        
         
-        
 
 
         recipeLabel.attr("href", "#")
