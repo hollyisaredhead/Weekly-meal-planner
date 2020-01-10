@@ -7,7 +7,6 @@ $(document).ready(function () {
 
     var eventsLocal = [];
     const eventsLocalStoreVar = "eventsLocal";
-    var recipeHits = recipeSet;
     var recipeDetails;
     var dayOfWeek, weekStartDt, weekStartDtISO, weekEndDt, weekEndDtISO;
 
@@ -165,8 +164,11 @@ $(document).ready(function () {
                         var eventHolderId = "#day" + (day + 1) + "-events";
                         var mealItem = $("<div class='mealEvent uk-button-primary uk-margin-small-bottom uk-padding-small uk-padding-remove-bottom uk-padding-remove-right uk-padding-remove-top'>");
                         mealItem.text(event.summary);
-                        mealItem.attr("data-recipe-id",event.id.slice(-32));
+                        mealItem.attr("data-recipe-id", event.id.slice(-32));
+                        mealItem.attr("data-event-id", event.id);
+                        var mealDelete = $("<a class='uk-button-danger uk-align-right uk-padding-remove uk-margin-remove mealDelete' uk-icon='trash' uk-tooltip='title: Delete Meal from Calendar'>");
 
+                        mealItem.append(mealDelete);
                         $(eventHolderId).append(mealItem);
 
                     }
@@ -246,7 +248,7 @@ $(document).ready(function () {
             }
         }).then(function (response) {
             // refresh the calendar
-             getUpcomingEvents();
+            getUpcomingEvents();
         });
 
     }
@@ -254,16 +256,16 @@ $(document).ready(function () {
     //--------------------------------------------------------//
     //               Delete selected event                       
     //--------------------------------------------------------//
-    function deleteEvent(event) {
+    function deleteEvent(eventId) {
 
-        event.preventDefault();
+        //event.preventDefault();
 
         if (!gapi.auth2.getAuthInstance().isSignedIn.get()) {
             handleAuthClick(event);
         };
 
         var authInst = gapi.auth2.getAuthInstance();
-        var eventId = this.dataset.eventId;
+        var eventId = eventId; 
         var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events/' + eventId + '?access_token=' + authInst.currentUser.Ab.Zi.access_token;
 
         $.ajax({
@@ -272,12 +274,34 @@ $(document).ready(function () {
             'contentType': 'application/json ; charset=UTF-8',
             'data': JSON.stringify({ 'sendUpdates': 'all' })
         }).then(function (response) {
-            console.log(response);
-            // Event Deleted Successfully
+            // Refresh the calendar view
+            getUpcomingEvents();
         });
 
 
     }
+
+    // $(document).on("click",".mealDelete", function(event){
+    //     event.preventDefault();
+    //     event.stopPropagation();
+    //     var eventId = event.currentTarget.parentNode.dataset.eventId;
+    //     deleteEvent(eventId);
+
+    // })
+
+    // UIkit.util.on('.mealDelete', 'click', function (event) 
+    $(document).on("click",".mealDelete", function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.target.blur();
+        var eventId = event.currentTarget.parentNode.dataset.eventId;
+        UIkit.modal.confirm('This will remove the selected meal from your calendar').then(function () {
+            // Yes - Confirmed
+            deleteEvent(eventId)
+        }, function () {
+            // No - Do nothing
+        });
+    });
 
     //--------------------------------------------------------//
     //               Popper: Preview on Hover function                       
@@ -365,7 +389,7 @@ $(document).ready(function () {
         // get the recipe
         var recipeID = event.target.parentNode.dataset.recipeId;
 
-        recipeDetails = recipeHits.find(obj => { return obj.recipe.uri === recipeID });
+        recipeDetails = recipeSet.find(obj => { return obj.recipe.uri === recipeID });
 
         dateTimePicker(event);
     });
@@ -378,8 +402,8 @@ $(document).ready(function () {
     //--------------------------------------------------------//
     //               Calendar Navigation                       
     //--------------------------------------------------------//
-    var calNavPrev = $("a[uk-slidenav-previous]");
-    var calNavNext = $("a[uk-slidenav-next]");
+    var calNavPrev = $("a[data-cal-previous]");
+    var calNavNext = $("a[data-cal-next]");
     var calNavCurr = $("#goToCurrentWeek");
     calNavPrev.on("click", navCal);
     calNavNext.on("click", navCal);
@@ -395,7 +419,7 @@ $(document).ready(function () {
 
         // Update the calendar start and end dates based on whether
         // previous week is selector or next
-        if (this.hasAttribute("uk-slidenav-previous")) {
+        if (this.hasAttribute("data-cal-previous")) {
             weekStartDt = moment(weekStartDt).subtract(7, 'days');
             weekStartDtISO = moment(weekStartDt, moment.ISO_8601).toISOString();
             weekEndDt = moment(weekEndDt).subtract(7, 'days');
@@ -420,8 +444,9 @@ $(document).ready(function () {
         weekEndDtISO = moment(weekEndDt, moment.ISO_8601).toISOString();
     }
 
-
-
+    //--------------------------------------------------------//
+    //               local storage function                       
+    //--------------------------------------------------------//
     function saveToLocalStorage(date, recipe) {
         eventsLocal.push({
             "date": date,
@@ -435,7 +460,3 @@ $(document).ready(function () {
     }
 
 });
-
-
-
-
