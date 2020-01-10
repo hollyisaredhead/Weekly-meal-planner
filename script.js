@@ -62,6 +62,7 @@ var setnumber = 0;
 
 // getRecipe();
 
+ 
 
 
 
@@ -215,14 +216,20 @@ function renderList () {
         recipeSet[ setnumber*10+i ];
             
         li = $("<li>")
-        li.addClass("uk-margin-top")
-        
-        addRecipeButton = $("<button>" + "+" + "</button>")
-        addRecipeButton.addClass("uk-margin-left addRecipe")
+        li.addClass("uk-margin-top uk-background-default")
         
         
-        recipeLabel = $("<a>" + recipeSet[ setnumber*10+i ].recipe.label + "</a>")
-        recipeLabel.append(addRecipeButton)
+        addRecipeButton = $("<button>")
+        addRecipeButton.addClass("uk-margin-left addRecipe recipeButton uk-padding-small")
+        addRecipeButton.attr("uk-icon", "calendar")
+        addRecipeButton.attr("uk-tooltip", "title: Add to Calendar")
+        
+        
+        
+        recipeLabel = $("<li>" + recipeSet[ setnumber*10+i ].recipe.label + "</li>")
+        li.prepend(addRecipeButton)
+        addRecipeButton.css("float", "right");
+       
         
         
 
@@ -231,13 +238,14 @@ function renderList () {
         recipeLabel.attr("data-recipe-id", recipeSet[ setnumber*10+i ].recipe.uri)
         // recipeLabel.attr("data", `label-${i}`)
         // recipeLabel.data("recipeId",recipeSet[ setnumber*10+i ].recipe.uri)
-        recipeLabel.addClass("uk-accordion-title uk-margin-top")
+        recipeLabel.addClass("uk-accordion-title uk-margin-top uk-margin-left")
         
         
         
         // accordion div
         accordionDiv = $("<div>");
-        accordionDiv.addClass("uk-accordion-content")
+        accordionDiv.addClass("uk-accordion-content uk-card-default")
+        accordionDiv.css("border-radius", "15px")
         // accordionDiv.attr("data", `details-${i}`)
 
         // ingredients header ul
@@ -267,19 +275,23 @@ function renderList () {
 
         // recipe image
 
-            recipeImg = $("<img>").css({ 'height': '150px', 'width': '200px' });
+            recipeImg = $("<img>").css({ 'height': '150px', 'width': '250px' });
             
             recipeImg.attr("src", recipeSet[ setnumber*10+i ].recipe.image);
 
-            recipeImg.addClass("uk-text-center")
+            recipeImg.addClass("uk-margin-top uk-margin-right")
             
            
 
         // recipe url
 
-            recipeUrl = $("<div>");
-            recipeUrlLink = $("<a>" + recipeSet[ setnumber*10+i ].recipe.url + "</a>");
+            recipeUrl = $("<button>");
+            recipeUrlLink = $("<a>" + "Link to Recipe" + "</a>");
+            recipeUrlLink.attr("href", recipeSet[ setnumber*10+i ].recipe.url)
+            recipeUrlLink.attr("target", "_blank")
             recipeUrl.append(recipeUrlLink);
+            recipeUrl.addClass("uk-margin-left uk-margin-bottom")
+            
             
         
 
