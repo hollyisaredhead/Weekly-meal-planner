@@ -61,34 +61,7 @@ var recipeSet = [];
     $(document).ready(function () {
 
 
-    $("#nextSet").on("click", function (event) {
-
-
-        if (setnumber > 8) {
-            return;
-        }
-
-        else {
-            event.preventDefault();
-            setnumber++
-            renderList();
-        }
-    })
-
-
-    $("#previousSet").on("click", function (event) {
-        if (setnumber <= 0) {
-            return
-        }
-
-        else {
-
-            event.preventDefault();
-            setnumber--
-            renderList();
-        }
-
-    })
+    
 
     $("#searchButton").on("click", function (event) {
         event.preventDefault();
@@ -298,6 +271,38 @@ function renderList () {
    
 
 }
+
+$("#nextSet").on("click", function (event) {
+
+
+    if (setnumber > 8) {
+        return;
+        
+    }
+
+    
+
+    else {
+        event.preventDefault();
+        setnumber++
+        renderList();
+    }
+})
+
+
+$("#previousSet").on("click", function (event) {
+    if (setnumber <= 0) {
+        return
+    }
+
+    else {
+
+        event.preventDefault();
+        setnumber--
+        renderList();
+    }
+
+})
     }
 
     
