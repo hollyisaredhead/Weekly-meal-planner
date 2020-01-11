@@ -388,11 +388,25 @@ $(document).ready(function () {
         event.preventDefault();
         event.stopPropagation();
         // get the recipe
-        var recipeID = event.target.parentNode.dataset.recipeId;
+        var recipeID;
+        if (event.target.dataset.recipeId){
+            recipeID = event.target.dataset.recipeId;
+        }
+        else if (event.target.parentNode.dataset.recipeId){
+            recipeID = event.target.parentNode.dataset.recipeId;
+        }
+        else if (event.target.childNode.dataset.recipeId){
+            recipeID = event.target.childNode.dataset.recipeID; 
+        }
+        else{
+            // do nothing
+        }
 
-        recipeDetails = recipeSet.find(obj => { return obj.recipe.uri === recipeID });
-
-        dateTimePicker(event);
+        if (recipeID !== null || recipeID !== undefined){
+            recipeDetails = recipeSet.find(obj => { return obj.recipe.uri === recipeID });
+            dateTimePicker(event);
+        }
+        
     });
     $(document).on('click', '#addEventCancelButton', function (event) {
         event.preventDefault();
