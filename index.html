@@ -29,29 +29,19 @@
     <!--google font-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
-
-
-
-
 </head>
 
 <body>
-    <nav class="uk-navbar-container" uk-navbar>
+    <nav class="uk-navbar-container" uk-navbar uk-sticky>
         <div class="uk-navbar-center">
-
             <ul class="uk-navbar-nav">
-
                 <h2>Weekly Meal Planner</h2>
-
-
-        </div>
-
         </div>
     </nav>
 
     <div class="uk-container">
 
-        <div uk-grid>
+        <div uk-grid class="uk-margin-bottom">
             <div class="uk-width-1-2@m uk-width-*@s">
 
 
@@ -121,148 +111,139 @@
                 </div>
             </div>
 
-            <div class="uk-width-1-2@m uk-width-*@s">
+            <div class="uk-width-1-2@m uk-width-*@s uk-margin-bottom">
+                <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+                    <h3 class="uk-navbar-center">
+                        Weekly Calendar
+                    </h3>
+                </nav>
+                <table class="uk-table uk-table-striped">
 
-                <div uk-sticky="media:@m">
+                    <tbody>
+                        <tr>
+                            <td id="day1">
+                                <div uk-grid>
+                                    <div class="uk-width-1-4" id="day1-date"></div>
+                                    <div class="uk-width-3-4" id="day1-events"></div>
+                                </div>
 
-                    <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
-                        <h3 class="uk-navbar-center">
-                            Weekly Calendar
-                        </h3>
-                    </nav>
-                    <table class="uk-table uk-table-striped">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="day2">
+                                <div uk-grid>
+                                    <div class="uk-width-1-4" id="day2-date"></div>
+                                    <div class="uk-width-3-4" id="day2-events"></div>
+                                </div>
 
-                        <tbody>
-                            <tr>
-                                <td id="day1">
-                                    <div uk-grid>
-                                        <div class="uk-width-1-4" id="day1-date"></div>
-                                        <div class="uk-width-3-4" id="day1-events"></div>
-                                    </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="day3">
+                                <div uk-grid>
+                                    <div class="uk-width-1-4" id="day3-date"></div>
+                                    <div class="uk-width-3-4" id="day3-events"></div>
+                                </div>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td id="day2">
-                                    <div uk-grid>
-                                        <div class="uk-width-1-4" id="day2-date"></div>
-                                        <div class="uk-width-3-4" id="day2-events"></div>
-                                    </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="day4">
+                                <div uk-grid>
+                                    <div class="uk-width-1-4" id="day4-date"></div>
+                                    <div class="uk-width-3-4" id="day4-events"></div>
+                                </div>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td id="day3">
-                                    <div uk-grid>
-                                        <div class="uk-width-1-4" id="day3-date"></div>
-                                        <div class="uk-width-3-4" id="day3-events"></div>
-                                    </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="day5">
+                                <div uk-grid>
+                                    <div class="uk-width-1-4" id="day5-date"></div>
+                                    <div class="uk-width-3-4" id="day5-events"></div>
+                                </div>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td id="day4">
-                                    <div uk-grid>
-                                        <div class="uk-width-1-4" id="day4-date"></div>
-                                        <div class="uk-width-3-4" id="day4-events"></div>
-                                    </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="day6">
+                                <div uk-grid>
+                                    <div class="uk-width-1-4" id="day6-date"></div>
+                                    <div class="uk-width-3-4" id="day6-events"></div>
+                                </div>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td id="day5">
-                                    <div uk-grid>
-                                        <div class="uk-width-1-4" id="day5-date"></div>
-                                        <div class="uk-width-3-4" id="day5-events"></div>
-                                    </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="day7">
+                                <div uk-grid>
+                                    <div class="uk-width-1-4" id="day7-date"></div>
+                                    <div class="uk-width-3-4" id="day7-events"></div>
+                                </div>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td id="day6">
-                                    <div uk-grid>
-                                        <div class="uk-width-1-4" id="day6-date"></div>
-                                        <div class="uk-width-3-4" id="day6-events"></div>
-                                    </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="uk-grid uk-margin-remove">
+                    <div class="uk-align-center uk-padding-remove">
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td id="day7">
-                                    <div uk-grid>
-                                        <div class="uk-width-1-4" id="day7-date"></div>
-                                        <div class="uk-width-3-4" id="day7-events"></div>
-                                    </div>
+                        <a href="" class="uk-slidenav-small " data-cal-previous><span
+                                uk-icon="chevron-double-left"></span></a>
+                        <button class="uk-button uk-button-default" id="goToCurrentWeek">Current Week</button>
+                        <a href="" class="uk-slidenav-small" data-cal-next><span uk-icon="chevron-double-right"></a>
+                    </div>
+                </div>
 
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="uk-grid uk-margin-remove">
-                        <div class="uk-align-center uk-padding-remove">
+            </div>
 
-                            <a href="" class="uk-slidenav-small " data-cal-previous><span
-                                    uk-icon="chevron-double-left"></span></a>
-                            <button class="uk-button uk-button-default" id="goToCurrentWeek">Current Week</button>
-                            <a href="" class="uk-slidenav-small" data-cal-next><span uk-icon="chevron-double-right"></a>
+            <!-- Popper element for meal preview in hidden state -->
+            <div class="popper uk-width-5-6 uk-width-1-4@m uk-width-1-3@m uk-hidden " id="popupBubble">
+                <div class="uk-card uk-card-default uk-box-shadow-large">
+                    <div class="uk-card-media-top">
+                        <img src="" class="uk-align-center" id="mealImage" alt="">
+                    </div>
+                    <div class="uk-card-body">
+                        <h3 class="uk-card-title" id="mealName"></h3>
+                        <a class="uk-text-break" id="mealDetails" target="_blank"></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Popper element for adding event in hidden state -->
+            <div class="popper uk-width-5-6 uk-width-1-4@m uk-width-1-3@m uk-background-muted uk-padding uk-panel uk-hidden uk-box-shadow-large"
+                id="dateTimePicker">
+
+                <form class="uk-form-stacked">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="mealDate">Date</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="mealDate" type="date" placeholder="Enter Date">
                         </div>
                     </div>
 
-                </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="mealTime">Time</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="mealTime" type="time">
+                        </div>
+                    </div>
 
+                    <div class="uk-margin">
+                        <a class="uk-button uk-button-default" id="addEvent_button">Add to Cal</a>
+                        <a class="uk-button uk-button-default" id="addEventCancelButton">Cancel</a>
+                    </div>
 
+                </form>
             </div>
 
+
         </div>
 
-        <!-- Popper element for meal preview in hidden state -->
-        <div class="popper uk-width-5-6 uk-width-1-4@m uk-width-1-3@m uk-hidden uk-box-shadow-large" style="z-index: 99999;" id="popupBubble">
-            <div class="uk-card uk-card-default">
-                <div class="uk-card-media-top">
-                    <img src="" class="uk-align-center" id="mealImage" alt="">
-                </div>
-                <div class="uk-card-body">
-                    <h3 class="uk-card-title" id="mealName"></h3>
-                    <a class="uk-text-break" id="mealDetails" target="_blank"></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Popper element for adding event in hidden state -->
-        <div class="popper uk-width-5-6 uk-width-1-4@m uk-width-1-3@m uk-background-muted uk-padding uk-panel uk-hidden uk-box-shadow-large"
-            id="dateTimePicker">
-
-            <form class="uk-form-stacked">
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="mealDate">Date</label>
-                    <div class="uk-form-controls">
-                        <input class="uk-input" id="mealDate" type="date" placeholder="Enter Date">
-                    </div>
-                </div>
-
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="mealTime">Time</label>
-                    <div class="uk-form-controls">
-                        <input class="uk-input" id="mealTime" type="time">
-                    </div>
-                </div>
-
-                <div class="uk-margin">
-                    <a class="uk-button uk-button-default" id="addEvent_button">Add to Cal</a>
-                    <a class="uk-button uk-button-default" id="addEventCancelButton">Cancel</a>
-                </div>
-
-            </form>
-        </div>
-
-
-
-    </div>
-
-    <script type="text/javascript" src="moment.js"></script>
-    <!-- link to Javascript -->
-    <script src="script.js"></script>
-    <script type="text/javascript" src="googleCalScript.js"></script>
+        <script type="text/javascript" src="moment.js"></script>
+        <!-- link to Javascript -->
+        <script src="script.js"></script>
+        <script type="text/javascript" src="googleCalScript.js"></script>
 
 </body>
 
