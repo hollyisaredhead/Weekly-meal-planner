@@ -109,7 +109,7 @@ $(document).ready(function () {
 
         var authInst = gapi.auth2.getAuthInstance();
         var currUser = authInst.currentUser.get();
-        var token = currUser.getAuthResponse().id_token;
+        var token = currUser.getAuthResponse().access_token;
         // var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token=' + authInst.currentUser.Ab.Zi.access_token;
         var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token=' + token;
         
@@ -207,7 +207,7 @@ $(document).ready(function () {
 
         var authInst = gapi.auth2.getAuthInstance();
         var currUser = authInst.currentUser.get();
-        var token = currUser.getAuthResponse().id_token;
+        var token = currUser.getAuthResponse().access_token;
         // var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token=' + authInst.currentUser.Ab.Zi.access_token;
         var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token=' + token;
 
@@ -272,7 +272,7 @@ $(document).ready(function () {
 
         var authInst = gapi.auth2.getAuthInstance();
         var currUser = authInst.currentUser.get();
-        var token = currUser.getAuthResponse().id_token;
+        var token = currUser.getAuthResponse().access_token;
         var eventId = eventId; 
         // var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events/' + eventId + '?access_token=' + authInst.currentUser.Ab.Zi.access_token;
         var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events/' + eventId + '?access_token=' + token;
