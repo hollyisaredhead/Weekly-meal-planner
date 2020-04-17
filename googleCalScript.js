@@ -108,10 +108,11 @@ $(document).ready(function () {
         };
 
         var authInst = gapi.auth2.getAuthInstance();
-        var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token=' + authInst.currentUser.Ab.Zi.access_token;
-
-
-
+        var currUser = authInst.currentUser.get();
+        var token = currUser.getAuthResponse().access_token;
+        // var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token=' + authInst.currentUser.Ab.Zi.access_token;
+        var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token=' + token;
+        
         for (var i = 0; i <= 6; i++) {
             var date = moment(moment(weekStartDt).add(i, 'days')).format("MMM, YY");
             var weekday = moment(moment(weekStartDt).add(i, 'days')).format("dd, Do");
@@ -205,7 +206,11 @@ $(document).ready(function () {
         };
 
         var authInst = gapi.auth2.getAuthInstance();
-        var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token=' + authInst.currentUser.Ab.Zi.access_token;
+        var currUser = authInst.currentUser.get();
+        var token = currUser.getAuthResponse().access_token;
+        // var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token=' + authInst.currentUser.Ab.Zi.access_token;
+        var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token=' + token;
+
 
         var id = moment().format("YYYYMMDDHHmmss") + recipeDetails.recipe.uri.slice(-32);
         var event = {
@@ -266,8 +271,11 @@ $(document).ready(function () {
         };
 
         var authInst = gapi.auth2.getAuthInstance();
+        var currUser = authInst.currentUser.get();
+        var token = currUser.getAuthResponse().access_token;
         var eventId = eventId; 
-        var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events/' + eventId + '?access_token=' + authInst.currentUser.Ab.Zi.access_token;
+        // var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events/' + eventId + '?access_token=' + authInst.currentUser.Ab.Zi.access_token;
+        var eventsURL = 'https://www.googleapis.com/calendar/v3/calendars/primary/events/' + eventId + '?access_token=' + token;
 
         $.ajax({
             'url': eventsURL,
