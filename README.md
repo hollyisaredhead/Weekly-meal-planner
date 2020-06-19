@@ -18,4 +18,10 @@ The results are displayed in an accordion that has the ingredients, a picture, a
 
 A calendar button allows the user to add it to their calendar. 
 
+Technologies used:
+
+Google Calendar API
+Javascript
+UIKit
+
 
