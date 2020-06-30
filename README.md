@@ -21,6 +21,6 @@ A calendar button allows the user to add it to their calendar.
 ## Here's a link to the deployed page through Herkou: 
 https://hollyisaredhead.github.io/Weekly-meal-planner/
 
-![Weekly Meal Planner - Project3 Screenshot](./weeklymealplanner.png)
+![Weekly Meal Planner - Screenshot](./weeklymealplanner.png)
 -------------------------------------------
 
